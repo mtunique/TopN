@@ -48,7 +48,7 @@ unordered_map<string, int> * wordCount(vector<string> * lines)
     return result;
 }
 
-void prtialTopN(const vector<vector<string> *> & lines, int fileIndex)
+void partialTopN(const vector<vector<string> *> & lines, int fileIndex)
 {
     // multi thread word count
     vector<future<unordered_map<string, int> *>> futures;
@@ -208,7 +208,7 @@ int main(int argc, char ** argv)
 
         if (lines.size() == processor_count)
         {
-            prtialTopN(lines, subFileCount);
+            partialTopN(lines, subFileCount);
             subFileCount++;
             lines.clear();
         }
@@ -221,7 +221,7 @@ int main(int argc, char ** argv)
 
     if (lines.size() > 0)
     {
-        prtialTopN(lines, subFileCount);
+        partialTopN(lines, subFileCount);
         subFileCount++;
         lines.clear();
     }
